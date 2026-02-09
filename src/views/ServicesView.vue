@@ -5,7 +5,7 @@ const services = ref([
   {
     title: 'Instalaciones Eléctricas de Potencia y Control',
     icon: '⚡',
-    image: '/src/assets/images/pizarra de switches.jpg',
+    image: '/pizarra de switches.jpg',
     subsections: [
       {
         name: 'Sistemas Industriales',
@@ -21,14 +21,14 @@ const services = ref([
         name: 'Plantas de Tratamiento de Aguas Residuales',
         description:
           'Instalaciones especializadas para infraestructura crítica con alta confiabilidad',
-        image: '/src/assets/images/controlador de planta de tratamiento.jpg',
+        image: '/controlador de planta de tratamiento.jpg',
       },
     ],
   },
   {
     title: 'Automatismos y Control',
     icon: '🤖',
-    image: '/src/assets/images/controlador de planta de tratamiento.jpg',
+    image: '/controlador de planta de tratamiento.jpg',
     subsections: [
       {
         name: 'Diseño e Implementación de Sistemas Automatizados',
@@ -49,7 +49,7 @@ const services = ref([
   {
     title: 'Energías Renovables',
     icon: '☀️',
-    image: '/src/assets/images/instalaciones de paneles solares.jpg',
+    image: '/instalaciones de paneles solares.jpg',
     subsections: [
       {
         name: 'Instalación de Paneles Solares Fotovoltaicos',

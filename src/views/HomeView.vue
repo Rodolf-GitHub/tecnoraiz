@@ -7,17 +7,17 @@ const currentBgImageIndex = ref(0)
 let bgImageInterval: ReturnType<typeof setInterval>
 
 const galleryImages = [
-  { src: '/src/assets/images/instalaciones de paneles solares.jpg', alt: 'Paneles solares' },
-  { src: '/src/assets/images/imagen parqueo con paneles solares.jpg', alt: 'Parqueo con paneles' },
-  { src: '/src/assets/images/instalacion de luces interiores.jpg', alt: 'Instalación de luces' },
-  { src: '/src/assets/images/pizarra de switches.jpg', alt: 'Control de switches' },
+  { src: '/instalaciones de paneles solares.jpg', alt: 'Paneles solares' },
+  { src: '/imagen parqueo con paneles solares.jpg', alt: 'Parqueo con paneles' },
+  { src: '/instalacion de luces interiores.jpg', alt: 'Instalación de luces' },
+  { src: '/pizarra de switches.jpg', alt: 'Control de switches' },
 ]
 
 const backgroundImages = [
-  '/src/assets/images/instalaciones de paneles solares.jpg',
-  '/src/assets/images/imagen parqueo con paneles solares.jpg',
-  '/src/assets/images/instalacion de luces interiores.jpg',
-  '/src/assets/images/pizarra de switches.jpg',
+  '/instalaciones de paneles solares.jpg',
+  '/imagen parqueo con paneles solares.jpg',
+  '/instalacion de luces interiores.jpg',
+  '/pizarra de switches.jpg',
 ]
 
 onMounted(() => {

@@ -9,7 +9,7 @@ import { Phone, Mail, MapPin } from 'lucide-vue-next'
       <div class="grid md:grid-cols-3 gap-6 mb-6">
         <!-- About -->
         <div class="flex flex-col items-start gap-3">
-          <img src="@/assets/logo.png" alt="TecnoRaíz Logo" class="h-16 w-auto" />
+          <img src="/logo.png" alt="TecnoRaíz Logo" class="h-16 w-auto" />
           <p class="text-gray-300 text-xs">
             Servicios integrales en instalaciones eléctricas, automatismos y energías renovables.
           </p>

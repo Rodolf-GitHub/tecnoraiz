@@ -45,7 +45,7 @@ const closeMenu = () => {
         <div
           class="bg-yellow-400 p-2 rounded-lg shadow-md hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300"
         >
-          <img src="@/assets/mini_logo.png" alt="TecnoRaiz" class="h-10 w-auto" />
+          <img src="/mini_logo.png" alt="TecnoRaiz" class="h-10 w-auto" />
         </div>
         <RouterLink
           to="/"
