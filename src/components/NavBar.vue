@@ -16,7 +16,7 @@ const closeMenu = () => {
 
 <template>
   <!-- Info Bar -->
-  <div class="bg-blue-900 text-white py-2 px-4 text-xs">
+  <div class="bg-blue-900 text-white py-2 px-4 text-xs sticky top-0 z-50 shadow-md">
     <div
       class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-2"
     >
@@ -106,8 +106,8 @@ const closeMenu = () => {
           </RouterLink>
         </li>
         <li>
-          <a
-            href="#servicios"
+          <RouterLink
+            to="/servicios"
             class="block px-5 py-3 text-white font-medium rounded-md transition-all duration-300 hover:bg-white hover:bg-opacity-10 hover:text-yellow-400 relative group"
             @click="closeMenu"
           >
@@ -115,11 +115,23 @@ const closeMenu = () => {
             <span
               class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 rounded group-hover:w-full transition-all duration-300"
             ></span>
-          </a>
+          </RouterLink>
         </li>
         <li>
-          <a
-            href="#contacto"
+          <RouterLink
+            to="/proyectos"
+            class="block px-5 py-3 text-white font-medium rounded-md transition-all duration-300 hover:bg-white hover:bg-opacity-10 hover:text-yellow-400 relative group"
+            @click="closeMenu"
+          >
+            Proyectos
+            <span
+              class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 rounded group-hover:w-full transition-all duration-300"
+            ></span>
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink
+            to="/contacto"
             class="block px-5 py-3 text-white font-medium rounded-md transition-all duration-300 hover:bg-white hover:bg-opacity-10 hover:text-yellow-400 relative group"
             @click="closeMenu"
           >
@@ -127,15 +139,7 @@ const closeMenu = () => {
             <span
               class="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 rounded group-hover:w-full transition-all duration-300"
             ></span>
-          </a>
-        </li>
-        <li>
-          <button
-            class="block w-full md:w-auto px-6 py-3 mx-3 my-1 md:my-0 bg-yellow-400 text-blue-700 font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] active:translate-y-0"
-            @click="closeMenu"
-          >
-            Obtener Cotización
-          </button>
+          </RouterLink>
         </li>
       </ul>
     </div>
