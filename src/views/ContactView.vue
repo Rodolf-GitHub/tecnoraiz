@@ -40,7 +40,7 @@ const handleSubmit = () => {
             <div
               class="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <Phone size="40" class="text-blue-700" />
+              <Phone :size="40" class="text-blue-700" />
             </div>
             <h3 class="text-2xl font-bold text-blue-700 mb-2">Ing. Liesvy Delgado</h3>
             <a href="tel:+598094840059" class="text-yellow-400 font-bold text-lg hover:underline"
@@ -53,7 +53,7 @@ const handleSubmit = () => {
             <div
               class="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <Phone size="40" class="text-blue-700" />
+              <Phone :size="40" class="text-blue-700" />
             </div>
             <h3 class="text-2xl font-bold text-blue-700 mb-2">Ing. Richard Cruz</h3>
             <a href="tel:+598094774616" class="text-yellow-400 font-bold text-lg hover:underline"
@@ -66,7 +66,7 @@ const handleSubmit = () => {
             <div
               class="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <Mail size="40" class="text-blue-700" />
+              <Mail :size="40" class="text-blue-700" />
             </div>
             <h3 class="text-2xl font-bold text-blue-700 mb-2">Email</h3>
             <a
@@ -80,7 +80,7 @@ const handleSubmit = () => {
         <!-- Address -->
         <div class="bg-white rounded-lg shadow-md p-8 mb-12">
           <div class="flex items-start gap-4">
-            <MapPin size="32" class="text-yellow-400 flex-shrink-0 mt-1" />
+            <MapPin :size="32" class="text-yellow-400 flex-shrink-0 mt-1" />
             <div>
               <h3 class="text-2xl font-bold text-blue-700 mb-2">Dirección</h3>
               <p class="text-gray-700 text-lg">Leon Pérez 3436</p>

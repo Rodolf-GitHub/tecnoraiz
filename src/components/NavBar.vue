@@ -20,16 +20,16 @@ const closeMenu = () => {
     <div class="max-w-6xl mx-auto flex justify-between items-center gap-6">
       <div class="flex gap-8">
         <div class="flex items-center gap-2">
-          <Phone size="14" class="text-yellow-400" />
+          <Phone :size="14" class="text-yellow-400" />
           <span class="text-yellow-400 font-bold">+598 094774616</span>
         </div>
         <div class="flex items-center gap-2">
-          <Phone size="14" class="text-yellow-400" />
+          <Phone :size="14" class="text-yellow-400" />
           <span class="text-yellow-400 font-bold">+598 094840059</span>
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <Mail size="14" class="text-yellow-400" />
+        <Mail :size="14" class="text-yellow-400" />
         <a href="mailto:tecnoraizadm@gmail.com" class="text-yellow-400 font-bold hover:underline"
           >tecnoraizadm@gmail.com</a
         >
@@ -64,8 +64,8 @@ const closeMenu = () => {
         class="md:hidden text-white hover:text-yellow-400 transition-colors"
         @click="toggleMenu"
       >
-        <Menu v-if="!isMenuOpen" size="28" />
-        <X v-else size="28" />
+        <Menu v-if="!isMenuOpen" :size="28" />
+        <X v-else :size="28" />
       </button>
 
       <!-- Navigation Menu -->

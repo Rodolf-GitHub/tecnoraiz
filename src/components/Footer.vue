@@ -47,11 +47,11 @@ import { Phone, Mail, MapPin } from 'lucide-vue-next'
           <h3 class="text-sm font-bold mb-2 text-yellow-400">Contacto</h3>
           <div class="space-y-1 text-xs">
             <div class="flex items-center gap-2">
-              <Phone size="14" class="text-yellow-400" />
+              <Phone :size="14" class="text-yellow-400" />
               <span class="text-gray-300">+598 094774616 / +598 094840059</span>
             </div>
             <div class="flex items-center gap-2">
-              <Mail size="14" class="text-yellow-400" />
+              <Mail :size="14" class="text-yellow-400" />
               <a
                 href="mailto:tecnoraizadm@gmail.com"
                 class="text-gray-300 hover:text-yellow-400 transition"
@@ -59,7 +59,7 @@ import { Phone, Mail, MapPin } from 'lucide-vue-next'
               >
             </div>
             <div class="flex items-start gap-2">
-              <MapPin size="14" class="text-yellow-400 flex-shrink-0 mt-0.5" />
+              <MapPin :size="14" class="text-yellow-400 flex-shrink-0 mt-0.5" />
               <span class="text-gray-300">León Pérez 3436</span>
             </div>
           </div>

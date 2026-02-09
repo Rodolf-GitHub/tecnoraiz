@@ -40,7 +40,7 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
           <div class="bg-white rounded-lg shadow-md p-8">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Users size="32" class="text-blue-700" />
+                <Users :size="32" class="text-blue-700" />
               </div>
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Liesvy Delgado</h3>
@@ -56,7 +56,7 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
           <div class="bg-white rounded-lg shadow-md p-8">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Users size="32" class="text-blue-700" />
+                <Users :size="32" class="text-blue-700" />
               </div>
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Richard Cruz</h3>
@@ -79,22 +79,22 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
         <h2 class="text-3xl font-bold text-blue-700 mb-12 text-center">Nuestros Valores</h2>
         <div class="grid md:grid-cols-4 gap-6">
           <div class="text-center">
-            <Award size="48" class="text-yellow-400 mx-auto mb-4" />
+            <Award :size="48" class="text-yellow-400 mx-auto mb-4" />
             <h3 class="text-xl font-bold text-blue-700 mb-2">Excelencia</h3>
             <p class="text-gray-700">Compromiso con la calidad en cada proyecto</p>
           </div>
           <div class="text-center">
-            <Shield size="48" class="text-yellow-400 mx-auto mb-4" />
+            <Shield :size="48" class="text-yellow-400 mx-auto mb-4" />
             <h3 class="text-xl font-bold text-blue-700 mb-2">Seguridad</h3>
             <p class="text-gray-700">Máximos estándares en protección laboral</p>
           </div>
           <div class="text-center">
-            <Lightbulb size="48" class="text-yellow-400 mx-auto mb-4" />
+            <Lightbulb :size="48" class="text-yellow-400 mx-auto mb-4" />
             <h3 class="text-xl font-bold text-blue-700 mb-2">Innovación</h3>
             <p class="text-gray-700">Tecnologías modernas y sostenibles</p>
           </div>
           <div class="text-center">
-            <Users size="48" class="text-yellow-400 mx-auto mb-4" />
+            <Users :size="48" class="text-yellow-400 mx-auto mb-4" />
             <h3 class="text-xl font-bold text-blue-700 mb-2">Profesionalismo</h3>
             <p class="text-gray-700">Atención personalizada y confiable</p>
           </div>

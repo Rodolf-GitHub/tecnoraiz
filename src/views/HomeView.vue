@@ -160,8 +160,8 @@ const services = ref([
           <div class="relative h-96 bg-black flex items-center justify-center">
             <img
               v-if="galleryImages[currentImageIndex]"
-              :src="galleryImages[currentImageIndex].src"
-              :alt="galleryImages[currentImageIndex].alt"
+              :src="galleryImages[currentImageIndex]?.src"
+              :alt="galleryImages[currentImageIndex]?.alt"
               class="w-full h-full object-cover"
             />
           </div>
@@ -173,7 +173,7 @@ const services = ref([
               "
               class="bg-blue-700 text-white p-2 rounded-lg hover:bg-blue-800 transition-colors"
             >
-              <ChevronLeft size="24" />
+              <ChevronLeft :size="24" />
             </button>
             <div class="flex gap-2">
               <button
@@ -190,7 +190,7 @@ const services = ref([
               @click="currentImageIndex = (currentImageIndex + 1) % galleryImages.length"
               class="bg-blue-700 text-white p-2 rounded-lg hover:bg-blue-800 transition-colors"
             >
-              <ChevronRight size="24" />
+              <ChevronRight :size="24" />
             </button>
           </div>
         </div>
@@ -202,7 +202,7 @@ const services = ref([
             class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 shadow-md hover:shadow-lg transition-all duration-300"
           >
             <div class="flex items-center gap-3 mb-4">
-              <component :is="service.icon" size="32" class="text-yellow-400" />
+              <component :is="service.icon" :size="32" class="text-yellow-400" />
               <h3 class="text-xl font-bold text-blue-700">{{ service.title }}</h3>
             </div>
             <p class="text-gray-700 mb-4">{{ service.description }}</p>
