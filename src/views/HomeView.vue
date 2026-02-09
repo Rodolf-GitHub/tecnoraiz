@@ -82,7 +82,7 @@ const services = ref([
     >
       <div class="max-w-6xl mx-auto px-4 relative z-10">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
-          Tecno<span class="text-yellow-400">Raíz</span>
+          Tecno<span class="text-blue-400">Raíz</span>
         </h1>
         <p class="text-xl md:text-2xl mb-4 font-light">Servicios Integrales</p>
         <p class="text-lg mb-8 text-gray-100 max-w-2xl">

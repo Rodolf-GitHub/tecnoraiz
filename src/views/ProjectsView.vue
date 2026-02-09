@@ -146,7 +146,43 @@ const projectsRichard = ref([
         <h2 class="text-3xl font-bold text-blue-700 mb-2">Referencias Profesionales</h2>
         <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Liesvy Delgado - +598 094840059</p>
 
-        <div class="overflow-x-auto">
+        <!-- Mobile: stacked cards -->
+        <div class="md:hidden space-y-4">
+          <div
+            v-for="(project, index) in projectsLiesvy"
+            :key="index"
+            class="bg-white rounded-lg shadow-md p-4 border-l-4 border-yellow-400"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-sm text-gray-500">Año</p>
+                <p class="font-bold text-blue-700">{{ project.year }}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm text-gray-500">Monto</p>
+                <p class="font-bold text-yellow-600">{{ project.amount || '-' }}</p>
+              </div>
+            </div>
+            <div class="mt-3">
+              <p class="text-sm text-gray-500">Descripción</p>
+              <p class="text-gray-700">{{ project.description }}</p>
+            </div>
+            <div class="mt-3 flex justify-between items-center text-sm text-gray-600">
+              <div>
+                <p class="text-sm text-gray-500">Cliente</p>
+                <p>{{ project.client }}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm text-gray-500">Contacto</p>
+                <p class="font-semibold text-blue-700">{{ project.contact }}</p>
+                <p class="text-yellow-600">{{ project.phone }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop: table -->
+        <div class="hidden md:block overflow-x-auto">
           <table class="w-full border-collapse">
             <thead>
               <tr class="bg-blue-700 text-white">
