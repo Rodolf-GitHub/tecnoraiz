@@ -5,6 +5,7 @@ const services = ref([
   {
     title: 'Instalaciones Eléctricas de Potencia y Control',
     icon: '⚡',
+    image: '/src/assets/images/pizarra de switches.jpg',
     subsections: [
       {
         name: 'Sistemas Industriales',
@@ -20,12 +21,14 @@ const services = ref([
         name: 'Plantas de Tratamiento de Aguas Residuales',
         description:
           'Instalaciones especializadas para infraestructura crítica con alta confiabilidad',
+        image: '/src/assets/images/controlador de planta de tratamiento.jpg',
       },
     ],
   },
   {
     title: 'Automatismos y Control',
     icon: '🤖',
+    image: '/src/assets/images/controlador de planta de tratamiento.jpg',
     subsections: [
       {
         name: 'Diseño e Implementación de Sistemas Automatizados',
@@ -46,6 +49,7 @@ const services = ref([
   {
     title: 'Energías Renovables',
     icon: '☀️',
+    image: '/src/assets/images/instalaciones de paneles solares.jpg',
     subsections: [
       {
         name: 'Instalación de Paneles Solares Fotovoltaicos',
@@ -84,21 +88,34 @@ const services = ref([
       <div class="max-w-6xl mx-auto px-4">
         <div v-for="(service, index) in services" :key="index" class="mb-12">
           <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-700 to-blue-500 p-8 text-white">
-              <h2 class="text-3xl font-bold flex items-center gap-4">
-                <span class="text-5xl">{{ service.icon }}</span>
-                {{ service.title }}
-              </h2>
-            </div>
-            <div class="p-8">
-              <div class="grid md:grid-cols-3 gap-6">
-                <div
-                  v-for="(sub, subIndex) in service.subsections"
-                  :key="subIndex"
-                  class="bg-blue-50 rounded-lg p-6 border-l-4 border-yellow-400"
-                >
-                  <h3 class="text-xl font-bold text-blue-700 mb-3">{{ sub.name }}</h3>
-                  <p class="text-gray-700">{{ sub.description }}</p>
+            <div class="flex flex-col">
+              <!-- Image (always above) -->
+              <div v-if="service.image" class="overflow-hidden bg-gray-100 w-full">
+                <img
+                  :src="service.image"
+                  :alt="service.title"
+                  class="w-full h-64 md:h-96 object-cover"
+                />
+              </div>
+              <!-- Content -->
+              <div>
+                <div class="bg-gradient-to-r from-blue-700 to-blue-500 p-8 text-white">
+                  <h2 class="text-3xl font-bold flex items-center gap-4">
+                    <span class="text-5xl">{{ service.icon }}</span>
+                    {{ service.title }}
+                  </h2>
+                </div>
+                <div class="p-8">
+                  <div class="grid md:grid-cols-1 gap-6">
+                    <div
+                      v-for="(sub, subIndex) in service.subsections"
+                      :key="subIndex"
+                      class="bg-blue-50 rounded-lg p-6 border-l-4 border-yellow-400"
+                    >
+                      <h3 class="text-xl font-bold text-blue-700 mb-3">{{ sub.name }}</h3>
+                      <p class="text-gray-700">{{ sub.description }}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -115,12 +132,12 @@ const services = ref([
           Contacta con nuestro equipo de ingenieros para analizar tu proyecto y proponer la mejor
           solución
         </p>
-        <a
-          href="/#contacto"
+        <RouterLink
+          to="/contacto#formulario"
           class="inline-block bg-yellow-400 text-blue-700 px-10 py-4 rounded-lg font-bold hover:bg-yellow-500 transition-all duration-300 hover:shadow-lg text-lg"
         >
-          Solicitar Presupuesto
-        </a>
+          Cuéntanos tu proyecto
+        </RouterLink>
       </div>
     </section>
   </div>

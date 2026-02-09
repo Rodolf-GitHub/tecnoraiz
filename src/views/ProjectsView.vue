@@ -9,7 +9,7 @@ const projectsLiesvy = ref([
     amount: '$6.400.000,00',
     client: 'CUJO SA',
     contact: 'Ing. Rodolfo Ferreira',
-    phone: '47334360',
+    phone: '+598 47334360',
   },
   {
     year: 2023,
@@ -18,7 +18,7 @@ const projectsLiesvy = ref([
     amount: '$1.387.506,00',
     client: 'INSACO SA',
     contact: 'Ing. Nadia Sandez',
-    phone: '097908344',
+    phone: '+598 097908344',
   },
   {
     year: 2023,
@@ -27,7 +27,7 @@ const projectsLiesvy = ref([
     amount: '$14.490.695,03',
     client: 'CIEMSA-SURESTE',
     contact: 'Arq. Martin Villar / Arq. Alfonso Viera',
-    phone: '096806229 / 099096669',
+    phone: '+598 096806229 / +598 099096669',
   },
   {
     year: 2023,
@@ -44,7 +44,7 @@ const projectsLiesvy = ref([
     amount: '$3.500.000,00',
     client: 'BERKES SA',
     contact: "Ing. Héctor D'Helia",
-    phone: '092456087',
+    phone: '+598 092456087',
   },
   {
     year: 2024,
@@ -53,7 +53,7 @@ const projectsLiesvy = ref([
     amount: '$2.654.918,57',
     client: 'STILER-JEAN DE NUL',
     contact: 'Ing. Franco Crotti',
-    phone: '091794034',
+    phone: '+598 091794034',
   },
   {
     year: 2024,
@@ -62,7 +62,7 @@ const projectsLiesvy = ref([
     amount: '$9.839.822,45',
     client: 'CIEMSA SA',
     contact: 'Ing. Verónica Aguilar',
-    phone: '099301326',
+    phone: '+598 099301326',
   },
   {
     year: 2024,
@@ -71,7 +71,7 @@ const projectsLiesvy = ref([
     amount: '$10.301.874,21',
     client: 'CIEMSA-SURESTE',
     contact: 'Arq. Alberto Peverelli',
-    phone: '099112705',
+    phone: '+598 099112705',
   },
 ])
 
@@ -81,7 +81,7 @@ const projectsRichard = ref([
     description: 'Instalación eléctrica de potencia de las oficinas de Sebamar',
     client: 'Sebamar',
     contact: 'Ing. Jonathan Barbosa',
-    phone: '092155581',
+    phone: '+598 092155581',
     company: 'Empresa Constructora ARCA',
   },
   {
@@ -90,7 +90,7 @@ const projectsRichard = ref([
       'Instalación eléctrica de potencia y cámaras de seguridad de las oficinas del Comunal Z10',
     client: 'Comunal Z10',
     contact: 'Arq. Enrique Homero',
-    phone: '099191765',
+    phone: '+598 099191765',
     company: 'Intendencia de Montevideo',
   },
   {
@@ -98,7 +98,7 @@ const projectsRichard = ref([
     description: 'Instalación eléctrica de potencia del Edificio de 60 apt Altos del Cordón',
     client: 'Altos del Cordón',
     contact: 'Arq. Yamila',
-    phone: '099727159',
+    phone: '+598 099727159',
     company: 'Empresa Constructora CSA',
   },
   {
@@ -106,7 +106,7 @@ const projectsRichard = ref([
     description: 'Edificio de 80 apt',
     client: 'Edif Mercedes',
     contact: 'Arq. Guillermo',
-    phone: '094154106',
+    phone: '+598 094154106',
     company: 'Empresa Constructora CSA',
   },
   {
@@ -115,7 +115,7 @@ const projectsRichard = ref([
       'Rehabilitación de la Instalación eléctrica de potencia de las oficinas y locales comerciales del Axion',
     client: 'Axion Libertad',
     contact: 'Arq. Javier Pérez',
-    phone: '099221701',
+    phone: '+598 099221701',
     company: 'Axion',
   },
   {
@@ -124,7 +124,7 @@ const projectsRichard = ref([
       'Rehabilitación de la Instalación eléctrica de potencia de las oficinas y locales comerciales del Axion',
     client: 'Axion Santa Lucia',
     contact: 'Arq. Javier Pérez',
-    phone: '099221701',
+    phone: '+598 099221701',
     company: 'Axion',
   },
 ])
@@ -144,7 +144,7 @@ const projectsRichard = ref([
     <section class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-blue-700 mb-2">Referencias Profesionales</h2>
-        <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Liesvy Delgado - 094840059</p>
+        <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Liesvy Delgado - +598 094840059</p>
 
         <div class="overflow-x-auto">
           <table class="w-full border-collapse">
@@ -166,7 +166,11 @@ const projectsRichard = ref([
                 <td class="border border-gray-300 p-3 font-bold text-blue-700">
                   {{ project.year }}
                 </td>
-                <td class="border border-gray-300 p-3">{{ project.description }}</td>
+                <td class="border border-gray-300 p-3">
+                  <div>
+                    <p>{{ project.description }}</p>
+                  </div>
+                </td>
                 <td class="border border-gray-300 p-3 font-bold text-yellow-600">
                   {{ project.amount }}
                 </td>
@@ -188,7 +192,7 @@ const projectsRichard = ref([
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-blue-700 mb-2">Referencias Profesionales</h2>
-        <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Richard Cruz - 094774616</p>
+        <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Richard Cruz - +598 094774616</p>
 
         <div class="grid gap-6">
           <div
@@ -203,7 +207,9 @@ const projectsRichard = ref([
                     class="bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold"
                     >{{ project.year }}</span
                   >
-                  <h3 class="text-lg font-bold text-blue-700">{{ project.description }}</h3>
+                  <div>
+                    <h3 class="text-lg font-bold text-blue-700">{{ project.description }}</h3>
+                  </div>
                 </div>
                 <p class="text-gray-700 ml-15">
                   <span class="font-semibold">Cliente:</span> {{ project.client }}
@@ -227,12 +233,12 @@ const projectsRichard = ref([
         <p class="text-xl mb-8 text-gray-100">
           Nos encantaría trabajar con vos. Contacta con nosotros para una consulta gratuita.
         </p>
-        <a
-          href="/#contacto"
+        <RouterLink
+          to="/contacto#formulario"
           class="inline-block bg-yellow-400 text-blue-700 px-10 py-4 rounded-lg font-bold hover:bg-yellow-500 transition-all duration-300 hover:shadow-lg text-lg"
         >
           Solicitar Información
-        </a>
+        </RouterLink>
       </div>
     </section>
   </div>

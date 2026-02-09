@@ -16,20 +16,16 @@ const closeMenu = () => {
 
 <template>
   <!-- Info Bar -->
-  <div class="bg-blue-900 text-white py-2 px-4 text-xs sticky top-0 z-50 shadow-md">
-    <div
-      class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-2"
-    >
-      <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+  <div class="bg-blue-900 text-white py-2 px-4 text-xs sticky top-0 z-50 shadow-md hidden md:block">
+    <div class="max-w-6xl mx-auto flex justify-between items-center gap-6">
+      <div class="flex gap-8">
         <div class="flex items-center gap-2">
-          <span class="font-semibold">Ing. Richard Cruz</span>
           <Phone size="14" class="text-yellow-400" />
-          <span class="text-yellow-400 font-bold">094774616</span>
+          <span class="text-yellow-400 font-bold">+598 094774616</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="font-semibold">Ing. Liesvy Delgado</span>
           <Phone size="14" class="text-yellow-400" />
-          <span class="text-yellow-400 font-bold">094840059</span>
+          <span class="text-yellow-400 font-bold">+598 094840059</span>
         </div>
       </div>
       <div class="flex items-center gap-2">
@@ -42,7 +38,7 @@ const closeMenu = () => {
   </div>
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-blue-700 to-blue-500 sticky top-8 z-50 shadow-lg">
+  <nav class="bg-gradient-to-r from-blue-700 to-blue-500 sticky top-0 md:top-0 z-50 shadow-lg">
     <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
       <!-- Logo -->
       <div class="flex items-center gap-3">

@@ -44,7 +44,7 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
               </div>
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Liesvy Delgado</h3>
-                <p class="text-yellow-400 font-semibold">094840059</p>
+                <p class="text-yellow-400 font-semibold">+598 094840059</p>
               </div>
             </div>
             <p class="text-gray-700 leading-relaxed">
@@ -60,7 +60,7 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
               </div>
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Richard Cruz</h3>
-                <p class="text-yellow-400 font-semibold">094774616</p>
+                <p class="text-yellow-400 font-semibold">+598 094774616</p>
               </div>
             </div>
             <p class="text-gray-700 leading-relaxed">

@@ -43,8 +43,8 @@ const handleSubmit = () => {
               <Phone size="40" class="text-blue-700" />
             </div>
             <h3 class="text-2xl font-bold text-blue-700 mb-2">Ing. Liesvy Delgado</h3>
-            <a href="tel:094840059" class="text-yellow-400 font-bold text-lg hover:underline"
-              >094840059</a
+            <a href="tel:+598094840059" class="text-yellow-400 font-bold text-lg hover:underline"
+              >+598 094840059</a
             >
           </div>
 
@@ -56,8 +56,8 @@ const handleSubmit = () => {
               <Phone size="40" class="text-blue-700" />
             </div>
             <h3 class="text-2xl font-bold text-blue-700 mb-2">Ing. Richard Cruz</h3>
-            <a href="tel:094774616" class="text-yellow-400 font-bold text-lg hover:underline"
-              >094774616</a
+            <a href="tel:+598094774616" class="text-yellow-400 font-bold text-lg hover:underline"
+              >+598 094774616</a
             >
           </div>
 
@@ -91,7 +91,7 @@ const handleSubmit = () => {
     </section>
 
     <!-- Contact Form -->
-    <section class="py-16 bg-white">
+    <section id="formulario" class="py-16 bg-white">
       <div class="max-w-2xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Envíanos tu Consulta</h2>
 

@@ -1,6 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Zap, Sun, Cog } from 'lucide-vue-next'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { Zap, Sun, Cog, ChevronLeft, ChevronRight } from 'lucide-vue-next'
+
+const currentImageIndex = ref(0)
+const currentBgImageIndex = ref(0)
+let bgImageInterval: ReturnType<typeof setInterval>
+
+const galleryImages = [
+  { src: '/src/assets/images/instalaciones de paneles solares.jpg', alt: 'Paneles solares' },
+  { src: '/src/assets/images/imagen parqueo con paneles solares.jpg', alt: 'Parqueo con paneles' },
+  { src: '/src/assets/images/instalacion de luces interiores.jpg', alt: 'Instalación de luces' },
+  { src: '/src/assets/images/pizarra de switches.jpg', alt: 'Control de switches' },
+]
+
+const backgroundImages = [
+  '/src/assets/images/instalaciones de paneles solares.jpg',
+  '/src/assets/images/imagen parqueo con paneles solares.jpg',
+  '/src/assets/images/instalacion de luces interiores.jpg',
+  '/src/assets/images/pizarra de switches.jpg',
+]
+
+onMounted(() => {
+  bgImageInterval = setInterval(() => {
+    currentBgImageIndex.value = (currentBgImageIndex.value + 1) % backgroundImages.length
+  }, 5000)
+})
+
+onUnmounted(() => {
+  clearInterval(bgImageInterval)
+})
 
 const services = ref([
   {
@@ -41,16 +69,25 @@ const services = ref([
 
 <template>
   <div class="w-full">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-20">
-      <div class="max-w-6xl mx-auto px-4">
+    <!-- Hero Section with Carousel Background -->
+    <section
+      class="relative text-white py-32 overflow-hidden"
+      :style="{
+        backgroundImage: `linear-gradient(rgba(13, 93, 184, 0.7), rgba(47, 126, 216, 0.7)), url('${backgroundImages[currentBgImageIndex]}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        transition: 'background-image 1s ease-in-out',
+      }"
+    >
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
           Tecno<span class="text-yellow-400">Raíz</span>
         </h1>
         <p class="text-xl md:text-2xl mb-4 font-light">Servicios Integrales</p>
         <p class="text-lg mb-8 text-gray-100 max-w-2xl">
-          Especialistas en instalaciones eléctricas de potencia, control, automatismos y energías
-          renovables
+          Especialistas en instalaciones eléctricas de potencia, control, automatismos, iluminación
+          interior, terminaciones interiores y energías renovables
         </p>
         <div class="flex gap-4">
           <a
@@ -59,12 +96,12 @@ const services = ref([
           >
             Nuestros Servicios
           </a>
-          <a
-            href="#contacto"
+          <RouterLink
+            to="/contacto"
             class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-700 transition-all duration-300"
           >
             Contáctanos
-          </a>
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -117,6 +154,47 @@ const services = ref([
     <section id="servicios" class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-4xl font-bold text-blue-700 mb-12 text-center">Servicios Integrales</h2>
+
+        <!-- Gallery -->
+        <div class="mb-16 bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+          <div class="relative h-96 bg-black flex items-center justify-center">
+            <img
+              v-if="galleryImages[currentImageIndex]"
+              :src="galleryImages[currentImageIndex].src"
+              :alt="galleryImages[currentImageIndex].alt"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex items-center justify-between p-4">
+            <button
+              @click="
+                currentImageIndex =
+                  (currentImageIndex - 1 + galleryImages.length) % galleryImages.length
+              "
+              class="bg-blue-700 text-white p-2 rounded-lg hover:bg-blue-800 transition-colors"
+            >
+              <ChevronLeft size="24" />
+            </button>
+            <div class="flex gap-2">
+              <button
+                v-for="(img, index) in galleryImages"
+                :key="index"
+                @click="currentImageIndex = index"
+                class="w-12 h-12 rounded-lg overflow-hidden border-2 transition-all"
+                :class="currentImageIndex === index ? 'border-yellow-400' : 'border-gray-300'"
+              >
+                <img :src="img.src" :alt="img.alt" class="w-full h-full object-cover" />
+              </button>
+            </div>
+            <button
+              @click="currentImageIndex = (currentImageIndex + 1) % galleryImages.length"
+              class="bg-blue-700 text-white p-2 rounded-lg hover:bg-blue-800 transition-colors"
+            >
+              <ChevronRight size="24" />
+            </button>
+          </div>
+        </div>
+
         <div class="grid md:grid-cols-3 gap-8">
           <div
             v-for="(service, index) in services"
@@ -150,12 +228,12 @@ const services = ref([
           Estamos a su disposición para coordinar una reunión, analizar su situación y proponer
           soluciones personalizadas.
         </p>
-        <a
-          href="#contacto"
+        <RouterLink
+          to="/contacto#formulario"
           class="inline-block bg-yellow-400 text-blue-700 px-10 py-4 rounded-lg font-bold hover:bg-yellow-500 transition-all duration-300 hover:shadow-lg text-lg"
         >
-          Solicitar Cotización
-        </a>
+          Cuéntanos tu proyecto
+        </RouterLink>
       </div>
     </section>
   </div>

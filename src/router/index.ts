@@ -34,6 +34,15 @@ const router = createRouter({
       component: ContactView,
     },
   ],
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
+    return { top: 0 }
+  },
 })
 
 export default router
