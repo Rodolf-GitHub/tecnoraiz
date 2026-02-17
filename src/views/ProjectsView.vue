@@ -216,17 +216,17 @@ const closeFullscreen = () => {
 
 const goToPrevious = () => {
   const currentProject = projects.value[currentProjectIndex.value]
-  if (selectedImageIndex.value > 0) {
+  if (currentProject && selectedImageIndex.value > 0) {
     selectedImageIndex.value--
-    selectedImage.value = currentProject.images[selectedImageIndex.value]
+    selectedImage.value = currentProject.images[selectedImageIndex.value] || null
   }
 }
 
 const goToNext = () => {
   const currentProject = projects.value[currentProjectIndex.value]
-  if (selectedImageIndex.value < currentProject.images.length - 1) {
+  if (currentProject && selectedImageIndex.value < currentProject.images.length - 1) {
     selectedImageIndex.value++
-    selectedImage.value = currentProject.images[selectedImageIndex.value]
+    selectedImage.value = currentProject.images[selectedImageIndex.value] || null
   }
 }
 
@@ -346,14 +346,18 @@ onUnmounted(() => {
         class="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center"
       >
         <img
+          v-if="selectedImage && projects[currentProjectIndex]"
           :src="selectedImage"
-          :alt="projects[currentProjectIndex].name"
+          :alt="projects[currentProjectIndex]?.name"
           class="max-w-full max-h-full object-contain"
         />
 
         <!-- Counter -->
-        <div class="absolute bottom-4 left-4 bg-black/50 text-white px-4 py-2 rounded-lg text-sm">
-          {{ selectedImageIndex + 1 }} / {{ projects[currentProjectIndex].images.length }}
+        <div
+          v-if="projects[currentProjectIndex]"
+          class="absolute bottom-4 left-4 bg-black/50 text-white px-4 py-2 rounded-lg text-sm"
+        >
+          {{ selectedImageIndex + 1 }} / {{ projects[currentProjectIndex]?.images.length }}
         </div>
 
         <!-- Navigation Arrows -->
@@ -366,7 +370,10 @@ onUnmounted(() => {
           ❮
         </button>
         <button
-          v-if="selectedImageIndex < projects[currentProjectIndex].images.length - 1"
+          v-if="
+            projects[currentProjectIndex] &&
+            selectedImageIndex < projects[currentProjectIndex].images.length - 1
+          "
           @click.stop="goToNext"
           class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all"
           aria-label="Siguiente imagen"
