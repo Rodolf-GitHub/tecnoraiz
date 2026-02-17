@@ -1,133 +1,253 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const projectsLiesvy = ref([
+const selectedImage = ref<string | null>(null)
+const selectedImageIndex = ref(0)
+const currentProjectIndex = ref(0)
+
+const projects = ref([
   {
-    year: 2023,
-    description:
-      'Instalación eléctrica de potencia y control de Planta Efluentes Parque de las Ciencias',
-    amount: '$6.400.000,00',
-    client: 'CUJO SA',
-    contact: 'Ing. Rodolfo Ferreira',
-    phone: '+598 47334360',
-  },
-  {
-    year: 2023,
-    description:
-      'Instalación eléctrica de potencia y control de pozo de Bombeo Aparicio Sarabia, para OSE Las Piedras',
-    amount: '$1.387.506,00',
-    client: 'INSACO SA',
-    contact: 'Ing. Nadia Sandez',
-    phone: '+598 097908344',
-  },
-  {
-    year: 2023,
-    description:
-      'Instalación eléctrica de potencia (Incluida Subestación) Para la Nueva UCUDAL San Jose ubicada en AV. 8 de Octubre',
-    amount: '$14.490.695,03',
-    client: 'CIEMSA-SURESTE',
-    contact: 'Arq. Martin Villar / Arq. Alfonso Viera',
-    phone: '+598 096806229 / +598 099096669',
-  },
-  {
-    year: 2023,
-    description:
-      'Instalación Eléctrica y cambio de Centralización de medidores en el edificio ubicado en 18 de julio 2020, tras el incendio de la galería entrevero',
-    amount: '$410.972,00',
-    client: 'Adm. Edif 18 de Julio 2020',
-    contact: 'Adriana Frattini',
-    phone: '099207400',
-  },
-  {
+    name: 'Edificio RIBA',
     year: 2024,
-    description: 'Obras de distribución UTE Canelones las Piedras',
-    amount: '$3.500.000,00',
-    client: 'BERKES SA',
-    contact: "Ing. Héctor D'Helia",
-    phone: '+598 092456087',
+    description: 'Instalación eléctrica en edificio RIBA',
+    images: [
+      '/edificio RIBA/Photos-001/IMG_20241008_144836.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_144852.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_145234.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_145246.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_145502.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_145512.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_145520.jpg',
+      '/edificio RIBA/Photos-001/IMG_20241008_145527.jpg',
+      '/edificio RIBA/Photos-0041/IMG_20241112_111250.jpg',
+      '/edificio RIBA/Photos-0041/IMG_20241112_111259.jpg',
+      '/edificio RIBA/Photos-0041/IMG_20241112_111504.jpg',
+      '/edificio RIBA/Photos-0041/IMG_20241112_111603.jpg',
+      '/edificio RIBA/Photos-0041/IMG_20241112_111658.jpg',
+      '/edificio RIBA/Photos-0201/IMG_20241107_144403.jpg',
+      '/edificio RIBA/Photos-0201/IMG_20241107_144417.jpg',
+      '/edificio RIBA/Photos-0201/IMG_20241107_144520.jpg',
+      '/edificio RIBA/Photos-0201/IMG_20241107_144523.jpg',
+      '/edificio RIBA/Photos-0201/IMG_20241107_144528.jpg',
+      '/edificio RIBA/Photos-0201/IMG_20241107_144533.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_070838.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_070850.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_070903.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_070912.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_070920.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_071014.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_071019.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_071023.jpg',
+      '/edificio RIBA/Photos-0301/IMG_20241116_071101.jpg',
+    ],
   },
   {
+    name: 'Obra Sebamar',
     year: 2024,
-    description:
-      'Instalación eléctrica de Potencia Para el Obrador destinado a la Ampliación y dragado de la terminal del Puerto de Montevideo',
-    amount: '$2.654.918,57',
-    client: 'STILER-JEAN DE NUL',
-    contact: 'Ing. Franco Crotti',
-    phone: '+598 091794034',
+    description: 'Instalación eléctrica en oficinas Sebamar',
+    images: [
+      '/Obra Sebamar/IMG-20240910-WA0034.jpg',
+      '/Obra Sebamar/IMG-20240910-WA0035.jpg',
+      '/Obra Sebamar/IMG-20240910-WA0036.jpg',
+      '/Obra Sebamar/IMG-20240910-WA0037.jpg',
+      '/Obra Sebamar/IMG-20240910-WA0038.jpg',
+    ],
   },
   {
+    name: 'Oficina Comunal Z10',
     year: 2024,
-    description:
-      'Instalación eléctrica de Potencia para PEPSICO SALES en Zona Franca Colonia de Sacramento',
-    amount: '$9.839.822,45',
-    client: 'CIEMSA SA',
-    contact: 'Ing. Verónica Aguilar',
-    phone: '+598 099301326',
+    description: 'Instalación eléctrica y cámaras de seguridad',
+    images: [
+      '/Oficina comunal 10/IMG-20240911-WA0006.jpg',
+      '/Oficina comunal 10/IMG-20240911-WA0009.jpg',
+      '/Oficina comunal 10/IMG-20240911-WA0010.jpg',
+    ],
   },
   {
+    name: 'Oficinas de Nueva Helvecia',
     year: 2024,
-    description:
-      'Instalación Eléctrica de Potencia para la Nueva ORT ubicada en Luis de la Torre 919',
-    amount: '$10.301.874,21',
-    client: 'CIEMSA-SURESTE',
-    contact: 'Arq. Alberto Peverelli',
-    phone: '+598 099112705',
+    description: 'Instalación eléctrica en oficinas',
+    images: [
+      '/Oficinas de Nueva Helvecia/IMG-20231120-WA0040.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240704-WA0025.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240704-WA0026.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240822-WA0029.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240822-WA0031.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240910-WA0040.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240910-WA0041.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240911-WA0003.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240911-WA0004.jpg',
+      '/Oficinas de Nueva Helvecia/IMG-20240911-WA0005.jpg',
+    ],
+  },
+  {
+    name: 'Puerto TCP Stiler',
+    year: 2024,
+    description: 'Obrador para ampliación y dragado de terminal portuaria',
+    images: [
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112225.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112234.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112255.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112300.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112416.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112424.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_112431.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_174706.jpg',
+      '/Puerto TCP Stiler/Photos-001 (3)/IMG_20240531_174711.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240419_114813.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240419_114826.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240419_114829.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240419_114834.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240426_103442.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240426_103453.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240426_103554.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240426_103559.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240426_103612.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240426_103629.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240429_071114.jpg',
+      '/Puerto TCP Stiler/Photos-00ZD1 (3)/IMG_20240429_071132.jpg',
+    ],
+  },
+  {
+    name: 'Rehabilitación de Axion',
+    year: 2025,
+    description: 'Rehabilitación de instalación eléctrica en oficinas y locales comerciales',
+    images: [
+      '/Reabilitacion de Axion/1758998262327.jpg',
+      '/Reabilitacion de Axion/1758998262385.jpg',
+      '/Reabilitacion de Axion/1758998262451.jpg',
+      '/Reabilitacion de Axion/IMG-20231110-WA0000.jpg',
+      '/Reabilitacion de Axion/IMG-20231120-WA0039.jpg',
+      '/Reabilitacion de Axion/IMG-20240816-WA0002.jpg',
+      '/Reabilitacion de Axion/IMG-20240816-WA0004.jpg',
+      '/Reabilitacion de Axion/IMG-20240816-WA0005.jpg',
+      '/Reabilitacion de Axion/IMG-20240920-WA0033.jpg',
+      '/Reabilitacion de Axion/IMG-20240920-WA0034.jpg',
+    ],
+  },
+  {
+    name: 'UCUDAL SAN JOSE',
+    year: 2023,
+    description: 'Instalación eléctrica de potencia para nueva sede',
+    images: [
+      '/UCUDAL SAN JOSE/IMG_20250318_181223.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181226.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181232.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181244.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181248.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181322.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181336.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181346.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181357.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181417.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181424.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181454.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181500.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181509.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181515.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181535.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181548.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181628.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181647.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181704.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181710.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181724.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181826.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181840.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181859.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181933.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_181955.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182009.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182021.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182038.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182136.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182150.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182156.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182202.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182214.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182219.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182235.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182239.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182251.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182343.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182353.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182355.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182357.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182401.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182419.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182439.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182444.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182448.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182513.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182550.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182607.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182611.jpg',
+      '/UCUDAL SAN JOSE/IMG_20250318_182657.jpg',
+    ],
+  },
+  {
+    name: 'Vivienda Salmain Jardines de Carrasco',
+    year: 2025,
+    description: 'Instalación eléctrica en viviendas',
+    images: [
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094301.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094331.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094347.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094352.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094358.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094401.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-001 (3)/IMG_20241126_094407.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-00DSF1 (3)/IMG_20241119_103801.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-00DSF1 (3)/IMG_20241119_103807.jpg',
+      '/Vivienda Salmain Jardines de Carrasco/Photos-00DSF1 (3)/IMG_20241119_104306.jpg',
+    ],
   },
 ])
 
-const projectsRichard = ref([
-  {
-    year: 2023,
-    description: 'Instalación eléctrica de potencia de las oficinas de Sebamar',
-    client: 'Sebamar',
-    contact: 'Ing. Jonathan Barbosa',
-    phone: '+598 092155581',
-    company: 'Empresa Constructora ARCA',
-  },
-  {
-    year: 2024,
-    description:
-      'Instalación eléctrica de potencia y cámaras de seguridad de las oficinas del Comunal Z10',
-    client: 'Comunal Z10',
-    contact: 'Arq. Enrique Homero',
-    phone: '+598 099191765',
-    company: 'Intendencia de Montevideo',
-  },
-  {
-    year: 2024,
-    description: 'Instalación eléctrica de potencia del Edificio de 60 apt Altos del Cordón',
-    client: 'Altos del Cordón',
-    contact: 'Arq. Yamila',
-    phone: '+598 099727159',
-    company: 'Empresa Constructora CSA',
-  },
-  {
-    year: 2024,
-    description: 'Edificio de 80 apt',
-    client: 'Edif Mercedes',
-    contact: 'Arq. Guillermo',
-    phone: '+598 094154106',
-    company: 'Empresa Constructora CSA',
-  },
-  {
-    year: 2025,
-    description:
-      'Rehabilitación de la Instalación eléctrica de potencia de las oficinas y locales comerciales del Axion',
-    client: 'Axion Libertad',
-    contact: 'Arq. Javier Pérez',
-    phone: '+598 099221701',
-    company: 'Axion',
-  },
-  {
-    year: 2025,
-    description:
-      'Rehabilitación de la Instalación eléctrica de potencia de las oficinas y locales comerciales del Axion',
-    client: 'Axion Santa Lucia',
-    contact: 'Arq. Javier Pérez',
-    phone: '+598 099221701',
-    company: 'Axion',
-  },
-])
+const openFullscreen = (image: string, projectIdx: number, imgIdx: number) => {
+  selectedImage.value = image
+  currentProjectIndex.value = projectIdx
+  selectedImageIndex.value = imgIdx
+}
+
+const closeFullscreen = () => {
+  selectedImage.value = null
+}
+
+const goToPrevious = () => {
+  const currentProject = projects.value[currentProjectIndex.value]
+  if (selectedImageIndex.value > 0) {
+    selectedImageIndex.value--
+    selectedImage.value = currentProject.images[selectedImageIndex.value]
+  }
+}
+
+const goToNext = () => {
+  const currentProject = projects.value[currentProjectIndex.value]
+  if (selectedImageIndex.value < currentProject.images.length - 1) {
+    selectedImageIndex.value++
+    selectedImage.value = currentProject.images[selectedImageIndex.value]
+  }
+}
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (!selectedImage.value) return
+  if (e.key === 'Escape') {
+    closeFullscreen()
+  } else if (e.key === 'ArrowLeft') {
+    goToPrevious()
+  } else if (e.key === 'ArrowRight') {
+    goToNext()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
@@ -140,121 +260,49 @@ const projectsRichard = ref([
       </div>
     </section>
 
-    <!-- Liesvy Projects -->
+    <!-- Projects Grid -->
     <section class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-blue-700 mb-2">Referencias Profesionales</h2>
-        <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Liesvy Delgado - +598 094840059</p>
-
-        <!-- Mobile: stacked cards -->
-        <div class="md:hidden space-y-4">
+        <div class="grid gap-8">
           <div
-            v-for="(project, index) in projectsLiesvy"
+            v-for="(project, index) in projects"
             :key="index"
-            class="bg-white rounded-lg shadow-md p-4 border-l-4 border-yellow-400"
+            class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-yellow-400 hover:shadow-xl transition-shadow"
           >
-            <div class="flex justify-between items-start">
-              <div>
-                <p class="text-sm text-gray-500">Año</p>
-                <p class="font-bold text-blue-700">{{ project.year }}</p>
-              </div>
-              <div class="text-right">
-                <p class="text-sm text-gray-500">Monto</p>
-                <p class="font-bold text-yellow-600">{{ project.amount || '-' }}</p>
-              </div>
-            </div>
-            <div class="mt-3">
-              <p class="text-sm text-gray-500">Descripción</p>
-              <p class="text-gray-700">{{ project.description }}</p>
-            </div>
-            <div class="mt-3 flex justify-between items-center text-sm text-gray-600">
-              <div>
-                <p class="text-sm text-gray-500">Cliente</p>
-                <p>{{ project.client }}</p>
-              </div>
-              <div class="text-right">
-                <p class="text-sm text-gray-500">Contacto</p>
-                <p class="font-semibold text-blue-700">{{ project.contact }}</p>
-                <p class="text-yellow-600">{{ project.phone }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Desktop: table -->
-        <div class="hidden md:block overflow-x-auto">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr class="bg-blue-700 text-white">
-                <th class="border border-gray-300 p-3 text-left">Año</th>
-                <th class="border border-gray-300 p-3 text-left">Descripción</th>
-                <th class="border border-gray-300 p-3 text-left">Monto</th>
-                <th class="border border-gray-300 p-3 text-left">Cliente</th>
-                <th class="border border-gray-300 p-3 text-left">Contacto</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(project, index) in projectsLiesvy"
-                :key="index"
-                class="hover:bg-blue-50 transition-colors"
+            <!-- Project Header -->
+            <div class="bg-gradient-to-r from-blue-700 to-blue-600 text-white p-6">
+              <h2 class="text-3xl font-bold">{{ project.name }}</h2>
+              <p class="text-blue-100 mt-2">{{ project.description }}</p>
+              <div
+                class="mt-3 inline-block bg-blue-500 px-3 py-1 rounded-full text-sm font-semibold"
               >
-                <td class="border border-gray-300 p-3 font-bold text-blue-700">
-                  {{ project.year }}
-                </td>
-                <td class="border border-gray-300 p-3">
-                  <div>
-                    <p>{{ project.description }}</p>
-                  </div>
-                </td>
-                <td class="border border-gray-300 p-3 font-bold text-yellow-600">
-                  {{ project.amount }}
-                </td>
-                <td class="border border-gray-300 p-3">{{ project.client }}</td>
-                <td class="border border-gray-300 p-3">
-                  <div class="text-sm">
-                    <p class="font-semibold">{{ project.contact }}</p>
-                    <p class="text-gray-600">{{ project.phone }}</p>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Richard Projects -->
-    <section class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-blue-700 mb-2">Referencias Profesionales</h2>
-        <p class="text-xl text-yellow-400 font-bold mb-8">Ing. Richard Cruz - +598 094774616</p>
-
-        <div class="grid gap-6">
-          <div
-            v-for="(project, index) in projectsRichard"
-            :key="index"
-            class="bg-white rounded-lg shadow-md p-6 border-l-4 border-yellow-400"
-          >
-            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <span
-                    class="bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold"
-                    >{{ project.year }}</span
-                  >
-                  <div>
-                    <h3 class="text-lg font-bold text-blue-700">{{ project.description }}</h3>
-                  </div>
-                </div>
-                <p class="text-gray-700 ml-15">
-                  <span class="font-semibold">Cliente:</span> {{ project.client }}
-                </p>
+                Año {{ project.year }}
               </div>
-              <div class="bg-blue-50 p-4 rounded-lg text-right">
-                <p class="text-sm font-semibold text-blue-700">{{ project.contact }}</p>
-                <p class="text-yellow-600 font-bold">{{ project.phone }}</p>
-                <p class="text-xs text-gray-600 mt-2">{{ project.company }}</p>
+            </div>
+
+            <!-- Project Gallery -->
+            <div class="p-6">
+              <p class="text-sm font-semibold text-gray-700 mb-4">
+                {{ project.images.length }} imágenes del proyecto
+              </p>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <button
+                  v-for="(image, imgIndex) in project.images"
+                  :key="imgIndex"
+                  @click="openFullscreen(image, index, imgIndex)"
+                  class="relative overflow-hidden rounded-lg group"
+                >
+                  <img
+                    :src="image"
+                    :alt="project.name"
+                    class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300 cursor-pointer"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                  >
+                    <span class="text-white text-2xl">🔍</span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
@@ -277,6 +325,62 @@ const projectsRichard = ref([
         </RouterLink>
       </div>
     </section>
+
+    <!-- Fullscreen Image Modal -->
+    <div
+      v-if="selectedImage"
+      @click="closeFullscreen"
+      class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+    >
+      <button
+        @click.stop="closeFullscreen"
+        class="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl z-60"
+        aria-label="Cerrar"
+      >
+        ✕
+      </button>
+
+      <!-- Image Container -->
+      <div
+        @click.stop
+        class="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center"
+      >
+        <img
+          :src="selectedImage"
+          :alt="projects[currentProjectIndex].name"
+          class="max-w-full max-h-full object-contain"
+        />
+
+        <!-- Counter -->
+        <div class="absolute bottom-4 left-4 bg-black/50 text-white px-4 py-2 rounded-lg text-sm">
+          {{ selectedImageIndex + 1 }} / {{ projects[currentProjectIndex].images.length }}
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button
+          v-if="selectedImageIndex > 0"
+          @click.stop="goToPrevious"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all"
+          aria-label="Imagen anterior"
+        >
+          ❮
+        </button>
+        <button
+          v-if="selectedImageIndex < projects[currentProjectIndex].images.length - 1"
+          @click.stop="goToNext"
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all"
+          aria-label="Siguiente imagen"
+        >
+          ❯
+        </button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="absolute bottom-4 right-4 text-white/70 text-sm text-right">
+        <p>Flechas: Anterior/Siguiente</p>
+        <p>ESC: Cerrar</p>
+      </div>
+    </div>
   </div>
 </template>
 
