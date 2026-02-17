@@ -372,7 +372,7 @@ onUnmounted(() => {
         <button
           v-if="
             projects[currentProjectIndex] &&
-            selectedImageIndex < projects[currentProjectIndex].images.length - 1
+            selectedImageIndex < projects[currentProjectIndex]!.images.length - 1
           "
           @click.stop="goToNext"
           class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all"
