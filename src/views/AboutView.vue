@@ -50,7 +50,8 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
             <p class="text-gray-700 leading-relaxed">
               Ingeniero eléctrico con más de 5 años de trayectoria en diseño, ejecución y
               supervisión de instalaciones eléctricas complejas. Ha liderado proyectos en industrias
-              de manufactura, edificios corporativos e infraestructura pública.
+              de manufactura, edificios corporativos e infraestructura pública. Autorizado en UTE
+              con categoria A
             </p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-8">
@@ -66,7 +67,7 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
             <p class="text-gray-700 leading-relaxed">
               Ingeniero eléctrico especializado en instalaciones de potencia y sistemas de control.
               Con experiencia demostrada en proyectos residenciales, comerciales e industriales de
-              envergadura.
+              gran envergadura. Autorizado en UTE con categoria B
             </p>
           </div>
         </div>

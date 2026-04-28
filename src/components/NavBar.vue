@@ -30,8 +30,8 @@ const closeMenu = () => {
       </div>
       <div class="flex items-center gap-2">
         <Mail :size="14" class="text-yellow-400" />
-        <a href="mailto:tecnoraizadm@gmail.com" class="text-yellow-400 font-bold hover:underline"
-          >tecnoraizadm@gmail.com</a
+        <a href="mailto:info@tecnoraiz.com.uy" class="text-yellow-400 font-bold hover:underline"
+          >info@tecnoraiz.com.uy</a
         >
       </div>
     </div>

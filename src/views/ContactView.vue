@@ -13,7 +13,7 @@ const formData = ref({
 const handleSubmit = () => {
   // Aquí puedes agregar la lógica para enviar el formulario
   const message = `Nombre: ${formData.value.name}%0AEmail: ${formData.value.email}%0ATeléfono: ${formData.value.phone}%0AEmpresa: ${formData.value.company}%0AMensaje: ${formData.value.message}`
-  window.open(`mailto:tecnoraizadm@gmail.com?subject=Consulta TecnoRaíz&body=${message}`)
+  window.open(`mailto:info@tecnoraiz.com.uy?subject=Consulta TecnoRaíz&body=${message}`)
 }
 </script>
 
@@ -70,9 +70,9 @@ const handleSubmit = () => {
             </div>
             <h3 class="text-2xl font-bold text-blue-700 mb-2">Email</h3>
             <a
-              href="mailto:tecnoraizadm@gmail.com"
+              href="mailto:info@tecnoraiz.com.uy"
               class="text-yellow-400 font-bold text-lg hover:underline break-all"
-              >tecnoraizadm@gmail.com</a
+              >info@tecnoraiz.com.uy</a
             >
           </div>
         </div>

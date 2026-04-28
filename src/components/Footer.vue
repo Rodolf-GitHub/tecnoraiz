@@ -53,9 +53,9 @@ import { Phone, Mail, MapPin } from 'lucide-vue-next'
             <div class="flex items-center gap-2">
               <Mail :size="14" class="text-yellow-400" />
               <a
-                href="mailto:tecnoraizadm@gmail.com"
+                href="mailto:info@tecnoraiz.com.uy"
                 class="text-gray-300 hover:text-yellow-400 transition"
-                >tecnoraizadm@gmail.com</a
+                >info@tecnoraiz.com.uy</a
               >
             </div>
             <div class="flex items-start gap-2">
