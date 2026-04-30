@@ -71,7 +71,16 @@ import { Phone, Mail, MapPin } from 'lucide-vue-next'
         class="border-t border-blue-700 pt-4 flex flex-col md:flex-row md:justify-between md:items-center gap-2 text-xs text-gray-300"
       >
         <p>&copy; 2026 TecnoRaíz. Todos los derechos reservados.</p>
-        <p>Diseñado con dedicación para tus proyectos</p>
+        <p>
+          Powered by
+          <a
+            href="https://groerosoftware.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-yellow-400 hover:underline"
+            >groerosoftware.com</a
+          >
+        </p>
       </div>
     </div>
   </footer>

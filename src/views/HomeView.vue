@@ -115,9 +115,9 @@ const gallerySources = computed(() => galleryImages.map((g) => g.src))
       <div class="max-w-6xl mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-white p-8 rounded-lg shadow-md">
-            <h3 class="text-2xl font-bold text-blue-700 mb-4">El origen de Tecno Raíz</h3>
+            <h3 class="text-2xl font-bold text-blue-700 mb-4">El origen de TecnoRaíz</h3>
             <p class="text-gray-700 leading-relaxed">
-              Tecno Raíz es un emprendimiento joven con raíces firmes en la ingeniería eléctrica.
+              TecnoRaíz es un emprendimiento joven con raíces firmes en la ingeniería eléctrica.
               Aunque recién comenzamos a operar como empresa, nuestros cimientos se apoyan en más de
               cinco años de experiencia profesional en el rubro. Fundada por los ingenieros Liesvy
               Delgado y Richard Cruz, nace con el propósito de ofrecer soluciones eléctricas

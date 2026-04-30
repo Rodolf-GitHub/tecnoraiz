@@ -60,7 +60,7 @@ const values = [
         <h2 class="text-3xl font-bold text-blue-700 mb-8">Quiénes Somos</h2>
         <div class="bg-blue-50 p-8 rounded-lg border-l-4 border-yellow-400">
           <p class="text-gray-700 text-lg leading-relaxed mb-4">
-            En Tecno Raíz ofrecemos soluciones integrales en ingeniería eléctrica, automatización y
+            En TecnoRaíz ofrecemos soluciones integrales en ingeniería eléctrica, automatización y
             energías renovables. Nacimos con la visión de simplificar la gestión técnica de hogares,
             industrias e instituciones, integrando tecnología avanzada, seguridad y eficiencia en
             cada proyecto.
@@ -99,8 +99,8 @@ const values = [
               industrias de manufactura, edificios corporativos e infraestructura pública,
               garantizando soluciones seguras, eficientes y alineadas con las normativas vigentes.
               Autorizado por UTE con categoría A, combina conocimiento técnico, visión estratégica y
-              compromiso con la excelencia para impulsar el crecimiento de Tecno Raíz y consolidar
-              su presencia en el sector eléctrico nacional.
+              compromiso con la excelencia para impulsar el crecimiento de TecnoRaíz y consolidar su
+              presencia en el sector eléctrico nacional.
             </p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-8">
@@ -122,7 +122,7 @@ const values = [
               envergadura. Ha participado en el diseño y ejecución de soluciones que garantizan
               eficiencia, seguridad y cumplimiento normativo en cada obra. Autorizado por UTE con
               categoría B, aporta conocimiento técnico, visión práctica y compromiso con la calidad,
-              consolidando junto a Tecno Raíz un enfoque moderno y confiable en el sector eléctrico
+              consolidando junto a TecnoRaíz un enfoque moderno y confiable en el sector eléctrico
               nacional.
             </p>
           </div>
@@ -210,7 +210,7 @@ const values = [
     <ImageLightbox
       v-model="founderLightboxIndex"
       :images="founderImages"
-      alt="Fundador de Tecno Raíz"
+      alt="Fundador de TecnoRaíz"
     />
   </div>
 </template>
