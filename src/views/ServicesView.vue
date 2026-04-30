@@ -3,68 +3,91 @@ import { ref } from 'vue'
 
 const services = ref([
   {
-    title: 'Instalaciones Eléctricas de Potencia y Control',
+    title: 'Instalaciones Eléctricas de Potencia e Iluminación',
     icon: '⚡',
-    image: '/pizarra de switches.jpg',
+    image: '/servicios/Instalacion Electrica Potencia e iluminacion/IMG_20240220_160412.jpg',
+    gallery: [
+      '/servicios/Instalacion Electrica Potencia e iluminacion/IMG-20250326-WA0005.jpg',
+      '/servicios/Instalacion Electrica Potencia e iluminacion/IMG-20250326-WA0007.jpg',
+      '/servicios/Instalacion Electrica Potencia e iluminacion/IMG-20250326-WA0008.jpg',
+      '/servicios/Instalacion Electrica Potencia e iluminacion/IMG_20250224_174317.jpg',
+      '/servicios/Instalacion Electrica Potencia e iluminacion/IMG_20250318_182343.jpg',
+    ],
     subsections: [
       {
-        name: 'Sistemas Industriales',
+        name: 'Montaje de sistemas industriales',
         description:
-          'Instalaciones complejas para plantas manufactureras y de procesamiento con cumplimiento de normativas internacionales',
+          'Ejecución de instalaciones eléctricas para plantas industriales con cumplimiento normativo y altos estándares de seguridad.',
       },
       {
-        name: 'Edificios Comerciales y Residenciales',
+        name: 'Instalaciones de potencia e iluminación en edificios comerciales y residenciales',
         description:
-          'Soluciones eléctricas adaptadas para edificios modernos con sistemas de distribución eficientes',
+          'Soluciones eléctricas integrales adaptadas a edificios modernos, optimizando consumo y confort.',
       },
       {
-        name: 'Plantas de Tratamiento de Aguas Residuales',
+        name: 'Cálculo y diseño para el control de energía reactiva',
         description:
-          'Instalaciones especializadas para infraestructura crítica con alta confiabilidad',
-        image: '/controlador de planta de tratamiento.jpg',
+          'Mejora del factor de potencia para reducir costos energéticos y prevenir penalizaciones.',
+      },
+      {
+        name: 'Cálculo, diseño e instalación de sistemas de puesta a tierra y protección contra descargas atmosféricas',
+        description:
+          'Protección integral de instalaciones, equipos y personas mediante sistemas certificados.',
       },
     ],
   },
   {
     title: 'Automatismos y Control',
     icon: '🤖',
-    image: '/controlador de planta de tratamiento.jpg',
+    image: '/servicios/Automatismo y control/IMG_20231026_162859.jpg',
+    gallery: [
+      '/servicios/Automatismo y control/IMG_20231121_100443.jpg',
+      '/servicios/Automatismo y control/IMG_20231208_123156.jpg',
+      '/servicios/Automatismo y control/IMG_20240320_110224.jpg',
+    ],
     subsections: [
       {
-        name: 'Diseño e Implementación de Sistemas Automatizados',
+        name: 'Diseño e implementación de sistemas automatizados',
         description:
-          'Soluciones inteligentes para optimizar procesos industriales y reducir costos operativos',
+          'Soluciones inteligentes para optimizar procesos industriales y reducir costos operativos.',
       },
       {
-        name: 'Integración de Tecnologías para Procesos Industriales',
+        name: 'Programación y control de pozos de bombeo y planta de tratamiento',
         description:
-          'Integración de sistemas modernos con infraestructura existente sin interrupciones',
+          'Automatización de sistemas hidráulicos críticos garantizando continuidad y eficiencia operativa.',
       },
       {
-        name: 'Cálculo y Diseño para Control de Energía Reactiva',
-        description: 'Optimización de consumo eléctrico y mejora de factor de potencia',
+        name: 'Comunicación, programación e implantación de sistemas PLC y SCADA',
+        description:
+          'Supervisión y control centralizado de procesos con tecnologías industriales de última generación.',
       },
     ],
   },
   {
     title: 'Energías Renovables',
     icon: '☀️',
-    image: '/instalaciones de paneles solares.jpg',
+    image: '/servicios/energias renobables/img1.jpg',
+    gallery: [
+      '/servicios/energias renobables/img2.jpg',
+      '/servicios/energias renobables/IMG_1262.jpg',
+      '/servicios/energias renobables/liesvi 4.jpg.jpeg',
+      '/servicios/energias renobables/R.jpeg',
+    ],
     subsections: [
       {
-        name: 'Instalación de Paneles Solares Fotovoltaicos',
+        name: 'Instalación de paneles solares fotovoltaicos',
         description:
-          'Sistemas solares personalizados para residencias e industrias con retorno de inversión garantizado',
+          'Sistemas solares personalizados para residencias e industrias con retorno de inversión garantizado.',
       },
       {
-        name: 'Implementación de Cargadores Eléctricos para Vehículos',
+        name: 'Instalación de cargadores para vehículos eléctricos',
         description:
-          'Infraestructura moderna para vehículos eléctricos con tecnología de carga rápida',
+          'Infraestructura moderna de carga para vehículos eléctricos con tecnología de carga rápida.',
       },
       {
-        name: 'Soluciones Híbridas y Autosustentables',
+        name: 'Alquiler y venta de plantas solares móviles',
         description:
-          'Combinación de fuentes de energía renovable para máxima independencia energética',
+          'Soluciones energéticas portátiles para obras, eventos y ubicaciones sin acceso a la red eléctrica.',
       },
     ],
   },
@@ -115,6 +138,18 @@ const services = ref([
                       <h3 class="text-xl font-bold text-blue-700 mb-3">{{ sub.name }}</h3>
                       <p class="text-gray-700">{{ sub.description }}</p>
                     </div>
+                  </div>
+                  <div
+                    v-if="service.gallery && service.gallery.length"
+                    class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3"
+                  >
+                    <img
+                      v-for="(img, i) in service.gallery"
+                      :key="i"
+                      :src="img"
+                      :alt="service.title"
+                      class="w-full h-32 object-cover rounded-lg shadow hover:scale-105 transition-transform"
+                    />
                   </div>
                 </div>
               </div>

@@ -1,5 +1,42 @@
 <script setup lang="ts">
-import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
+import { Lightbulb, Shield, Gauge, Handshake, Leaf, Eye } from 'lucide-vue-next'
+
+const values = [
+  {
+    icon: Lightbulb,
+    title: 'Innovación',
+    description:
+      'Buscamos constantemente nuevas soluciones que integren tecnología avanzada y prácticas sostenibles.',
+  },
+  {
+    icon: Shield,
+    title: 'Seguridad',
+    description: 'Cada proyecto se ejecuta con el máximo rigor técnico y cumplimiento normativo.',
+  },
+  {
+    icon: Gauge,
+    title: 'Eficiencia',
+    description: 'Optimizamos recursos y procesos para brindar resultados confiables y rentables.',
+  },
+  {
+    icon: Handshake,
+    title: 'Compromiso',
+    description:
+      'Acompañamos a nuestros clientes con responsabilidad y cercanía, superando expectativas.',
+  },
+  {
+    icon: Leaf,
+    title: 'Sostenibilidad',
+    description:
+      'Promovemos energías renovables y prácticas responsables para un futuro más limpio.',
+  },
+  {
+    icon: Eye,
+    title: 'Transparencia',
+    description:
+      'Construimos relaciones basadas en confianza, comunicación clara y ética profesional.',
+  },
+]
 </script>
 
 <template>
@@ -12,21 +49,22 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
       </div>
     </section>
 
-    <!-- History Section -->
+    <!-- Quienes Somos Section -->
     <section class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-blue-700 mb-8">Nuestra Historia</h2>
+        <h2 class="text-3xl font-bold text-blue-700 mb-8">Quiénes Somos</h2>
         <div class="bg-blue-50 p-8 rounded-lg border-l-4 border-yellow-400">
           <p class="text-gray-700 text-lg leading-relaxed mb-4">
-            Tecno Raíz es un emprendimiento joven con raíces firmes en la ingeniería eléctrica.
-            Aunque recién comenzamos a operar como empresa, nuestros cimientos están construidos
-            sobre <strong>más de cinco años de experiencia profesional</strong> en el rubro.
+            En Tecno Raíz ofrecemos soluciones integrales en ingeniería eléctrica, automatización y
+            energías renovables. Nacimos con la visión de simplificar la gestión técnica de hogares,
+            industrias e instituciones, integrando tecnología avanzada, seguridad y eficiencia en
+            cada proyecto.
           </p>
           <p class="text-gray-700 text-lg leading-relaxed">
-            Fundada por los ingenieros <strong>Liesvy Delgado</strong> y
-            <strong>Richard Cruz</strong>, Tecno Raíz nace con el propósito de ofrecer soluciones
-            eléctricas modernas, seguras y eficientes, combinando conocimiento técnico con
-            compromiso ambiental.
+            Nuestro equipo está formado por profesionales altamente capacitados, comprometidos con
+            brindar un servicio confiable, personalizado y orientado a superar expectativas.
+            Apostamos por la innovación, la sostenibilidad y el trato directo como pilares de
+            nuestra propuesta.
           </p>
         </div>
       </div>
@@ -39,35 +77,46 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-white rounded-lg shadow-md p-8">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Users :size="32" class="text-blue-700" />
-              </div>
+              <img
+                src="/fotos_de_fundadores/Liesvy.jpg"
+                alt="Ing. Liesvy Delgado"
+                class="w-20 h-20 rounded-full object-cover border-4 border-yellow-400"
+              />
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Liesvy Delgado</h3>
                 <p class="text-yellow-400 font-semibold">+598 094840059</p>
               </div>
             </div>
             <p class="text-gray-700 leading-relaxed">
-              Ingeniero eléctrico con más de 5 años de trayectoria en diseño, ejecución y
-              supervisión de instalaciones eléctricas complejas. Ha liderado proyectos en industrias
-              de manufactura, edificios corporativos e infraestructura pública. Autorizado en UTE
-              con categoria A
+              Ingeniero eléctrico con más de cinco años de trayectoria en el diseño, ejecución y
+              supervisión de instalaciones eléctricas de alta complejidad. Ha liderado proyectos en
+              industrias de manufactura, edificios corporativos e infraestructura pública,
+              garantizando soluciones seguras, eficientes y alineadas con las normativas vigentes.
+              Autorizado por UTE con categoría A, combina conocimiento técnico, visión estratégica y
+              compromiso con la excelencia para impulsar el crecimiento de Tecno Raíz y consolidar
+              su presencia en el sector eléctrico nacional.
             </p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-8">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Users :size="32" class="text-blue-700" />
-              </div>
+              <img
+                src="/fotos_de_fundadores/Richard.jpg"
+                alt="Ing. Richard Cruz"
+                class="w-20 h-20 rounded-full object-cover border-4 border-yellow-400"
+              />
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Richard Cruz</h3>
                 <p class="text-yellow-400 font-semibold">+598 094774616</p>
               </div>
             </div>
             <p class="text-gray-700 leading-relaxed">
-              Ingeniero eléctrico especializado en instalaciones de potencia y sistemas de control.
-              Con experiencia demostrada en proyectos residenciales, comerciales e industriales de
-              gran envergadura. Autorizado en UTE con categoria B
+              Ingeniero eléctrico especializado en instalaciones de potencia y sistemas de control,
+              con sólida experiencia en proyectos residenciales, comerciales e industriales de gran
+              envergadura. Ha participado en el diseño y ejecución de soluciones que garantizan
+              eficiencia, seguridad y cumplimiento normativo en cada obra. Autorizado por UTE con
+              categoría B, aporta conocimiento técnico, visión práctica y compromiso con la calidad,
+              consolidando junto a Tecno Raíz un enfoque moderno y confiable en el sector eléctrico
+              nacional.
             </p>
           </div>
         </div>
@@ -78,26 +127,15 @@ import { Award, Users, Lightbulb, Shield } from 'lucide-vue-next'
     <section class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-blue-700 mb-12 text-center">Nuestros Valores</h2>
-        <div class="grid md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <Award :size="48" class="text-yellow-400 mx-auto mb-4" />
-            <h3 class="text-xl font-bold text-blue-700 mb-2">Excelencia</h3>
-            <p class="text-gray-700">Compromiso con la calidad en cada proyecto</p>
-          </div>
-          <div class="text-center">
-            <Shield :size="48" class="text-yellow-400 mx-auto mb-4" />
-            <h3 class="text-xl font-bold text-blue-700 mb-2">Seguridad</h3>
-            <p class="text-gray-700">Máximos estándares en protección laboral</p>
-          </div>
-          <div class="text-center">
-            <Lightbulb :size="48" class="text-yellow-400 mx-auto mb-4" />
-            <h3 class="text-xl font-bold text-blue-700 mb-2">Innovación</h3>
-            <p class="text-gray-700">Tecnologías modernas y sostenibles</p>
-          </div>
-          <div class="text-center">
-            <Users :size="48" class="text-yellow-400 mx-auto mb-4" />
-            <h3 class="text-xl font-bold text-blue-700 mb-2">Profesionalismo</h3>
-            <p class="text-gray-700">Atención personalizada y confiable</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            v-for="(value, index) in values"
+            :key="index"
+            class="text-center bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          >
+            <component :is="value.icon" :size="48" class="text-yellow-400 mx-auto mb-4" />
+            <h3 class="text-xl font-bold text-blue-700 mb-2">{{ value.title }}</h3>
+            <p class="text-gray-700">{{ value.description }}</p>
           </div>
         </div>
       </div>

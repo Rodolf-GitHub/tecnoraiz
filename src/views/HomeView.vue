@@ -7,17 +7,17 @@ const currentBgImageIndex = ref(0)
 let bgImageInterval: ReturnType<typeof setInterval>
 
 const galleryImages = [
-  { src: '/instalaciones de paneles solares.jpg', alt: 'Paneles solares' },
-  { src: '/imagen parqueo con paneles solares.jpg', alt: 'Parqueo con paneles' },
-  { src: '/instalacion de luces interiores.jpg', alt: 'Instalación de luces' },
-  { src: '/pizarra de switches.jpg', alt: 'Control de switches' },
+  { src: '/carrusel_inicio/instalaciones de paneles solares.jpg', alt: 'Paneles solares' },
+  { src: '/carrusel_inicio/imagen parqueo con paneles solares.jpg', alt: 'Parqueo con paneles' },
+  { src: '/carrusel_inicio/instalacion de luces interiores.jpg', alt: 'Instalación de luces' },
+  { src: '/carrusel_inicio/IMG_20231026_163147.jpg', alt: 'Instalación eléctrica' },
 ]
 
 const backgroundImages = [
-  '/instalaciones de paneles solares.jpg',
-  '/imagen parqueo con paneles solares.jpg',
-  '/instalacion de luces interiores.jpg',
-  '/pizarra de switches.jpg',
+  '/carrusel_inicio/instalaciones de paneles solares.jpg',
+  '/carrusel_inicio/imagen parqueo con paneles solares.jpg',
+  '/carrusel_inicio/instalacion de luces interiores.jpg',
+  '/carrusel_inicio/IMG_20231026_163147.jpg',
 ]
 
 onMounted(() => {
@@ -109,42 +109,36 @@ const services = ref([
     <!-- About Section -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-blue-700 mb-8 text-center">Sobre TecnoRaíz</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-white p-8 rounded-lg shadow-md">
-            <h3 class="text-2xl font-bold text-blue-700 mb-4">Nuestra Historia</h3>
+            <h3 class="text-2xl font-bold text-blue-700 mb-4">El origen de Tecno Raíz</h3>
             <p class="text-gray-700 leading-relaxed">
               Tecno Raíz es un emprendimiento joven con raíces firmes en la ingeniería eléctrica.
-              Aunque recién comenzamos a operar como empresa, nuestros cimientos están construidos
-              sobre más de cinco años de experiencia profesional en el rubro. Fundada por los
-              ingenieros Liesvy Delgado y Richard Cruz, nace con el propósito de ofrecer soluciones
-              eléctricas modernas, seguras y eficientes.
+              Aunque recién comenzamos a operar como empresa, nuestros cimientos se apoyan en más de
+              cinco años de experiencia profesional en el rubro. Fundada por los ingenieros Liesvy
+              Delgado y Richard Cruz, nace con el propósito de ofrecer soluciones eléctricas
+              modernas, seguras y eficientes.
             </p>
           </div>
           <div class="bg-white p-8 rounded-lg shadow-md">
             <h3 class="text-2xl font-bold text-blue-700 mb-4">Nuestra Misión</h3>
             <p class="text-gray-700 leading-relaxed">
-              Brindar soluciones eléctricas de alta calidad, seguras y adaptadas a las necesidades
-              actuales, integrando tecnologías limpias y eficientes para contribuir a un futuro más
-              sustentable.
+              Brindar soluciones integrales en ingeniería eléctrica, automatización y energías
+              renovables, combinando innovación, seguridad y eficiencia. Nos comprometemos a
+              facilitar la gestión técnica de nuestros clientes mediante un servicio profesional,
+              confiable y personalizado, adaptado a cada proyecto y orientado a superar
+              expectativas.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200">
-              <h4 class="font-bold text-blue-700 mb-3">¿Por qué elegirnos?</h4>
-              <ul class="space-y-2 text-gray-700">
-                <li class="flex items-center gap-2">
-                  <span class="text-yellow-400">✓</span> Experiencia comprobada en campo
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-yellow-400">✓</span> Atención personalizada y profesional
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-yellow-400">✓</span> Compromiso con la calidad y seguridad
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-yellow-400">✓</span> Enfoque en energías limpias
-                </li>
-              </ul>
-            </div>
+          </div>
+          <div class="bg-white p-8 rounded-lg shadow-md md:col-span-2">
+            <h3 class="text-2xl font-bold text-blue-700 mb-4">Visión</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Ser la empresa líder en Uruguay en servicios eléctricos especializados, reconocida por
+              su excelencia técnica, atención directa y capacidad de integrar tecnología avanzada en
+              hogares, industrias e instituciones. Aspiramos a transformar la infraestructura
+              energética del país con soluciones inteligentes, sostenibles y centradas en el
+              cliente.
+            </p>
           </div>
         </div>
       </div>
