@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Lightbulb, Shield, Gauge, Handshake, Leaf, Eye } from 'lucide-vue-next'
+import ImageLightbox from '@/components/ImageLightbox.vue'
+
+const founderImages = ['/fotos_de_fundadores/Liesvy.jpg', '/fotos_de_fundadores/Richard.jpg']
+const founderLightboxIndex = ref<number | null>(null)
 
 const values = [
   {
@@ -80,7 +85,8 @@ const values = [
               <img
                 src="/fotos_de_fundadores/Liesvy.jpg"
                 alt="Ing. Liesvy Delgado"
-                class="w-20 h-20 rounded-full object-cover border-4 border-yellow-400"
+                @click="founderLightboxIndex = 0"
+                class="w-20 h-20 rounded-full object-cover border-4 border-yellow-400 cursor-zoom-in"
               />
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Liesvy Delgado</h3>
@@ -102,7 +108,8 @@ const values = [
               <img
                 src="/fotos_de_fundadores/Richard.jpg"
                 alt="Ing. Richard Cruz"
-                class="w-20 h-20 rounded-full object-cover border-4 border-yellow-400"
+                @click="founderLightboxIndex = 1"
+                class="w-20 h-20 rounded-full object-cover border-4 border-yellow-400 cursor-zoom-in"
               />
               <div>
                 <h3 class="text-2xl font-bold text-blue-700">Ing. Richard Cruz</h3>
@@ -199,6 +206,12 @@ const values = [
         </div>
       </div>
     </section>
+
+    <ImageLightbox
+      v-model="founderLightboxIndex"
+      :images="founderImages"
+      alt="Fundador de Tecno Raíz"
+    />
   </div>
 </template>
 

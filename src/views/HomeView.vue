@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { Zap, Sun, Cog, ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import ImageLightbox from '@/components/ImageLightbox.vue'
 
 const currentImageIndex = ref(0)
 const currentBgImageIndex = ref(0)
+const lightboxIndex = ref<number | null>(null)
 let bgImageInterval: ReturnType<typeof setInterval>
 
 const galleryImages = [
@@ -65,6 +67,8 @@ const services = ref([
     ],
   },
 ])
+
+const gallerySources = computed(() => galleryImages.map((g) => g.src))
 </script>
 
 <template>
@@ -156,7 +160,8 @@ const services = ref([
               v-if="galleryImages[currentImageIndex]"
               :src="galleryImages[currentImageIndex]?.src"
               :alt="galleryImages[currentImageIndex]?.alt"
-              class="w-full h-full object-cover"
+              @click="lightboxIndex = currentImageIndex"
+              class="w-full h-full object-cover cursor-zoom-in"
             />
           </div>
           <div class="flex items-center justify-between p-4">
@@ -230,6 +235,8 @@ const services = ref([
         </RouterLink>
       </div>
     </section>
+
+    <ImageLightbox v-model="lightboxIndex" :images="gallerySources" alt="Servicios Integrales" />
   </div>
 </template>
 

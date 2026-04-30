@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import ImageLightbox from '@/components/ImageLightbox.vue'
+
+const lightboxServiceIndex = ref<number | null>(null)
+const lightboxImageIndex = ref<number | null>(null)
 
 const services = ref([
   {
@@ -92,6 +96,26 @@ const services = ref([
     ],
   },
 ])
+
+const serviceImages = (idx: number): string[] => {
+  const s = services.value[idx]
+  if (!s) return []
+  return [s.image, ...(s.gallery || [])].filter(Boolean) as string[]
+}
+
+const currentLightboxImages = computed(() =>
+  lightboxServiceIndex.value !== null ? serviceImages(lightboxServiceIndex.value) : [],
+)
+
+const openLightbox = (serviceIdx: number, imageIdx: number) => {
+  lightboxServiceIndex.value = serviceIdx
+  lightboxImageIndex.value = imageIdx
+}
+
+const onLightboxIndexChange = (value: number | null) => {
+  lightboxImageIndex.value = value
+  if (value === null) lightboxServiceIndex.value = null
+}
 </script>
 
 <template>
@@ -117,7 +141,8 @@ const services = ref([
                 <img
                   :src="service.image"
                   :alt="service.title"
-                  class="w-full h-64 md:h-96 object-cover"
+                  @click="openLightbox(index, 0)"
+                  class="w-full h-64 md:h-96 object-cover cursor-zoom-in"
                 />
               </div>
               <!-- Content -->
@@ -148,7 +173,8 @@ const services = ref([
                       :key="i"
                       :src="img"
                       :alt="service.title"
-                      class="w-full h-32 object-cover rounded-lg shadow hover:scale-105 transition-transform"
+                      @click="openLightbox(index, i + 1)"
+                      class="w-full h-32 object-cover rounded-lg shadow hover:scale-105 transition-transform cursor-zoom-in"
                     />
                   </div>
                 </div>
@@ -175,6 +201,13 @@ const services = ref([
         </RouterLink>
       </div>
     </section>
+
+    <ImageLightbox
+      :model-value="lightboxImageIndex"
+      @update:model-value="onLightboxIndexChange"
+      :images="currentLightboxImages"
+      alt="Imagen del servicio"
+    />
   </div>
 </template>
 
