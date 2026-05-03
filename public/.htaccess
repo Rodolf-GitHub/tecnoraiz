@@ -1,0 +1,86 @@
+# ============================================================
+#  .htaccess para SPA Vue + Vite (modo history)
+#  Coloca este archivo en la raíz del sitio (junto al index.html)
+# ============================================================
+
+# --- Activar motor de reescritura ---
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Si el sitio NO está en la raíz del dominio, ajusta esta línea.
+    # Ejemplo: si la web vive en https://midominio.com/tecnoraiz/
+    # entonces descomenta y pon:
+    # RewriteBase /tecnoraiz/
+    RewriteBase /
+
+    # No reescribir si el archivo o carpeta existen físicamente
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Cualquier otra ruta -> index.html (Vue Router se encarga)
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# ============================================================
+#  Forzar HTTPS (descomenta si tu hosting tiene SSL activo)
+# ============================================================
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ============================================================
+#  Tipos MIME correctos (por si el servidor no los reconoce)
+# ============================================================
+<IfModule mod_mime.c>
+    AddType application/javascript            .js .mjs
+    AddType text/css                          .css
+    AddType image/svg+xml                     .svg
+    AddType image/webp                        .webp
+    AddType application/json                  .json
+    AddType font/woff                         .woff
+    AddType font/woff2                        .woff2
+</IfModule>
+
+# ============================================================
+#  Compresión GZIP (mejora velocidad)
+# ============================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml font/woff font/woff2
+</IfModule>
+
+# ============================================================
+#  Caché de assets (los archivos con hash se pueden cachear largo)
+# ============================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML siempre fresco
+    ExpiresByType text/html                   "access plus 0 seconds"
+
+    # Assets con hash de Vite -> caché largo
+    ExpiresByType text/css                    "access plus 1 year"
+    ExpiresByType application/javascript      "access plus 1 year"
+    ExpiresByType image/jpeg                  "access plus 1 year"
+    ExpiresByType image/png                   "access plus 1 year"
+    ExpiresByType image/webp                  "access plus 1 year"
+    ExpiresByType image/svg+xml               "access plus 1 year"
+    ExpiresByType font/woff                   "access plus 1 year"
+    ExpiresByType font/woff2                  "access plus 1 year"
+</IfModule>
+
+# ============================================================
+#  Seguridad básica
+# ============================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Evitar listado de directorios
+Options -Indexes

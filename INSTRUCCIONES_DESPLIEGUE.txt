@@ -1,0 +1,60 @@
+====================================================
+  INSTRUCCIONES DE DESPLIEGUE — TecnoRaíz
+====================================================
+
+REQUISITOS
+----------
+- Hosting web estático (Apache, Nginx, cPanel, etc.)
+- NO requiere Node.js ni base de datos
+- Se recomienda SSL/HTTPS activo (ej: Let's Encrypt)
+
+ARCHIVOS A SUBIR
+----------------
+Subir TODO el contenido de la carpeta "dist/" al directorio
+raíz del servidor web. Según el hosting puede llamarse:
+  - public_html/
+  - www/
+  - htdocs/
+
+IMPORTANTE: subir el CONTENIDO de dist/, no la carpeta en sí.
+
+CONFIGURACIÓN DE RUTAS SPA (obligatorio)
+-----------------------------------------
+La web usa Vue Router con rutas como /servicios, /proyectos,
+/contacto, etc. Sin esta configuración esas rutas darán error 404.
+
+>> Apache — crear archivo ".htaccess" en la raíz del servidor con:
+
+    <IfModule mod_rewrite.c>
+      RewriteEngine On
+      RewriteBase /
+      RewriteRule ^index\.html$ - [L]
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule . /index.html [L]
+    </IfModule>
+
+>> Nginx — en el bloque server agregar:
+
+    location / {
+      try_files $uri $uri/ /index.html;
+    }
+
+DOMINIO
+-------
+Apuntar el dominio tecnoraiz.com.uy al servidor mediante DNS:
+  - Registro A  → IP del servidor
+  - O registro CNAME → nombre del servidor (según el hosting)
+
+VERIFICACIÓN FINAL
+------------------
+Una vez desplegado, probar que funcionen estas URLs:
+  - https://tecnoraiz.com.uy/
+  - https://tecnoraiz.com.uy/servicios
+  - https://tecnoraiz.com.uy/proyectos
+  - https://tecnoraiz.com.uy/sobre-nosotros
+  - https://tecnoraiz.com.uy/contacto
+
+====================================================
+  Desarrollado por groerosoftware.com
+====================================================
